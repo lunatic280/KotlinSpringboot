@@ -22,7 +22,7 @@ class BlogController(
         return "hello"
     }
 
-    @GetMapping("/List")
+    @GetMapping("/list")
     fun getBlogAll(): List<BlogDto> {
         return blogService.getBlogAll()
     }
@@ -42,7 +42,7 @@ class BlogController(
         return blogService.updatedBlog(id, dto)
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{id}")
     fun deleteBlog(@PathVariable id: Long) {
         return blogService.deleteBlog(id)
     }
