@@ -22,7 +22,12 @@ data class Blog(
     val createdDate: LocalDateTime = LocalDateTime.now(),
 
     @Column(nullable = false)
-    val updatedDate: LocalDateTime = LocalDateTime.now()
+    val updatedDate: LocalDateTime = LocalDateTime.now(),
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    val user: Users
+
 ) {
     fun toDto(): BlogDto {
         return BlogDto(title, content, createdDate, updatedDate)
